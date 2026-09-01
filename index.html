@@ -6,7 +6,7 @@
     <title>TrustCo — software que faz o negócio girar</title>
     <meta
       name="description"
-      content="A TrustCo cria softwares de gestão para negócios de serviço. Conheça o Horalivre (agendamento) e o BuffetMaster (gestão de buffets e eventos)."
+      content="A TrustCo cria softwares de gestão para negócios de serviço: Horalivre (agendamento), BuffetMaster (buffets e eventos), Validê (validade e rastreabilidade em cozinha) e VoyaDesk (atendimento para agências de viagem)."
     />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z' fill='%232563eb'/%3E%3Cpath d='M11 16l3.2 3.2L21 12' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
     <style>
@@ -158,6 +158,19 @@
       footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 34px 0; }
       .foot-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--ink-400); font-size: 14px; }
       .foot-in .brand { font-size: 16px; }
+
+      /* Preços — valores vêm das APIs em runtime (nada de número fixo no HTML) */
+      .price-note { text-align: center; color: var(--ink-400); font-size: 14.5px; margin-top: 12px; }
+      .price-card .price { margin-top: 20px; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+      .price-from { font-size: 13px; color: var(--ink-400); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+      .price-value { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+      .price-per { color: var(--ink-400); font-size: 14px; }
+      .price-all { margin-top: 10px; color: var(--ink-300); font-size: 13.5px; min-height: 19px; }
+      .price-card.is-loading .price-value { color: var(--ink-400); }
+      .price-card.is-unavailable { display: none; }
+      /* Seção sem nenhum produto visível sai do ar em vez de virar título solto. */
+      #precos.is-empty,
+      #solucoes.is-empty { display: none; }
     </style>
   </head>
   <body>
@@ -186,14 +199,14 @@
           <h1>Tecnologia que faz o seu negócio girar.</h1>
           <p class="sub">
             A TrustCo cria plataformas de gestão sob medida para negócios de serviço — do agendamento
-            do autônomo à operação completa de um buffet. Um só padrão de qualidade, dois produtos prontos para usar.
+            do autônomo à operação completa de um buffet, da cozinha à agência de viagens. Um só padrão de qualidade, em produtos prontos para usar.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#solucoes">Ver as soluções</a>
             <a class="btn btn-ghost" href="#porque">Como trabalhamos</a>
           </div>
           <div class="trust-row">
-            <span><b>2</b> produtos no ar</span>
+            <span><b data-contagem-produtos>4</b> produtos no ar</span>
             <span>Multi-tenant &amp; seguro</span>
             <span>Feito no Brasil 🇧🇷</span>
           </div>
@@ -203,11 +216,11 @@
       <section class="sec" id="solucoes">
         <div class="wrap">
           <p class="sec-label">Nossas soluções</p>
-          <h2 class="sec-title">Dois produtos, um só padrão de excelência</h2>
+          <h2 class="sec-title">Cada negócio com a ferramenta certa</h2>
 
           <div class="products">
             <!-- Horalivre -->
-            <article class="card horalivre">
+            <article class="card horalivre" data-produto="horalivre">
               <div class="card-head">
                 <div class="card-logo">
                   <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -236,7 +249,7 @@
             </article>
 
             <!-- BuffetMaster -->
-            <article class="card buffet">
+            <article class="card buffet" data-produto="buffetmaster">
               <div class="card-head">
                 <div class="card-logo">
                   <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -261,6 +274,66 @@
               </div>
               <a class="go" href="https://buffetmaster.trustco.pro" target="_blank" rel="noopener">
                 Acessar o BuffetMaster
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </article>
+
+            <!-- Validê -->
+            <article class="card valide" data-produto="valide">
+              <div class="card-head">
+                <div class="card-logo">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M16 3.5a12.5 12.5 0 1 1-9.2 21" stroke="#12a771" stroke-width="2.6" stroke-linecap="round" />
+                    <path d="M10.5 16.4l3.7 3.7L22 12.3" stroke="#3fc794" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Validê</h3>
+                  <div class="kicker">Validade e rastreabilidade na cozinha</div>
+                </div>
+              </div>
+              <p>
+                O que vence hoje, sem ninguém precisar lembrar. Para restaurante, padaria e cozinha
+                industrial que responde à vigilância sanitária.
+              </p>
+              <div class="feats">
+                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#3fc794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Relatório diário do que vence, por e-mail</div>
+                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#3fc794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Contagem lendo o QR da etiqueta pelo celular</div>
+                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#3fc794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Relatórios em PDF e Word para auditoria</div>
+              </div>
+              <a class="go" href="https://valide.trustco.pro" target="_blank" rel="noopener">
+                Acessar o Validê
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </article>
+
+            <!-- VoyaDesk -->
+            <article class="card voyadesk" data-produto="voyadesk">
+              <div class="card-head">
+                <div class="card-logo">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="2.5" y="6.5" width="27" height="19" rx="4" stroke="#1F6FA8" stroke-width="2" />
+                    <path d="M4 9.5 14.2 17a3 3 0 0 0 3.6 0L28 9.5" stroke="#1F6FA8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.35" />
+                    <path d="M9 20.5c4.5-.4 8.4-2.6 11.4-6.2" stroke="#6CAFDB" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.1 3.4" />
+                    <path d="m19.4 10.6 4.8 1.3-1.3 4.8" stroke="#6CAFDB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>VoyaDesk</h3>
+                  <div class="kicker">Atendimento para agências de viagem</div>
+                </div>
+              </div>
+              <p>
+                A caixa de e-mails da agência com nome, prazo e dono. Conecta o Outlook ou Gmail que
+                a equipe já usa — para o cliente, nada muda.
+              </p>
+              <div class="feats">
+                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Cada e-mail vira chamado com protocolo</div>
+                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Filas, responsável e prazo em horário comercial</div>
+                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Atendentes ilimitados, preço por agência</div>
+              </div>
+              <a class="go" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">
+                Conhecer o VoyaDesk
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
@@ -292,14 +365,83 @@
         </div>
       </section>
 
+      <section class="sec" id="precos">
+        <div class="wrap">
+          <p class="sec-label">Planos</p>
+          <h2 class="sec-title">Preço direto da fonte</h2>
+          <p class="price-note">Sete dias grátis, sem cartão de crédito.</p>
+
+          <div class="products">
+            <article class="card horalivre price-card is-loading" data-prices="horalivre" data-produto="horalivre">
+              <div class="card-head">
+                <div>
+                  <h3>Horalivre</h3>
+                  <div class="kicker">Agendamento para autônomos</div>
+                </div>
+              </div>
+              <div class="price">
+                <span class="price-from">a partir de</span>
+                <span class="price-value" data-price-value>carregando…</span>
+                <span class="price-per" data-price-per></span>
+              </div>
+              <div class="price-all" data-price-all></div>
+              <a class="go" href="https://horalivre.trustco.pro#planos" target="_blank" rel="noopener">
+                Ver planos do Horalivre
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </article>
+
+            <article class="card buffet price-card is-loading" data-prices="buffetmaster" data-produto="buffetmaster">
+              <div class="card-head">
+                <div>
+                  <h3>BuffetMaster</h3>
+                  <div class="kicker">Gestão de buffets e eventos</div>
+                </div>
+              </div>
+              <div class="price">
+                <span class="price-from">a partir de</span>
+                <span class="price-value" data-price-value>carregando…</span>
+                <span class="price-per" data-price-per></span>
+              </div>
+              <div class="price-all" data-price-all></div>
+              <a class="go" href="https://buffetmaster.trustco.pro#planos" target="_blank" rel="noopener">
+                Ver planos do BuffetMaster
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </article>
+
+            <article class="card valide price-card is-loading" data-prices="valide" data-produto="valide">
+              <div class="card-head">
+                <div>
+                  <h3>Validê</h3>
+                  <div class="kicker">Validade e rastreabilidade na cozinha</div>
+                </div>
+              </div>
+              <div class="price">
+                <span class="price-from">a partir de</span>
+                <span class="price-value" data-price-value>carregando…</span>
+                <span class="price-per" data-price-per></span>
+              </div>
+              <div class="price-all" data-price-all></div>
+              <a class="go" href="https://valide.trustco.pro" target="_blank" rel="noopener">
+                Ver planos do Validê
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="sec">
         <div class="wrap">
           <div class="cta">
             <h2>Pronto para organizar o seu negócio?</h2>
             <p>Escolha a solução TrustCo feita para você e comece hoje mesmo.</p>
             <div class="hero-cta">
-              <a class="btn btn-primary" href="https://horalivre.trustco.pro" target="_blank" rel="noopener">Sou autônomo → Horalivre</a>
-              <a class="btn btn-ghost" href="https://buffetmaster.trustco.pro" target="_blank" rel="noopener">Tenho um buffet → BuffetMaster</a>
+              <a class="btn btn-primary" href="https://horalivre.trustco.pro" target="_blank" rel="noopener" data-produto="horalivre">Sou autônomo → Horalivre</a>
+              <a class="btn btn-ghost" href="https://buffetmaster.trustco.pro" target="_blank" rel="noopener" data-produto="buffetmaster">Tenho um buffet → BuffetMaster</a>
+              <a class="btn btn-ghost" href="https://valide.trustco.pro" target="_blank" rel="noopener" data-produto="valide">Tenho uma cozinha → Validê</a>
+              <a class="btn btn-ghost" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener" data-produto="voyadesk">Tenho uma agência → VoyaDesk</a>
             </div>
           </div>
         </div>
@@ -320,6 +462,92 @@
     </main>
     <script>
       document.getElementById('y').textContent = new Date().getFullYear();
+
+// ---- Vitrine: quais produtos aparecem -------------------------------------------
+      // O liga/desliga vive no admin.trustco.pro e é lido daqui em runtime, então esconder
+      // um produto não exige deploy nenhum.
+      //
+      // O padrão do HTML é MOSTRAR: os cards já vêm escritos e visíveis. Só escondemos
+      // depois da resposta. É de propósito — se a API não responder, a página fica como
+      // está, que é o estado correto na esmagadora maioria dos dias. O contrário (nascer
+      // escondido e revelar depois) transformaria qualquer instabilidade numa página de
+      // empresa sem produto nenhum, e ainda piscaria a cada visita.
+      const VITRINE_API = 'https://voyadesk-production-20d8.up.railway.app/publico/vitrine';
+
+      fetch(VITRINE_API, { headers: { Accept: 'application/json' } })
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status))))
+        .then((produtos) => {
+          produtos
+            .filter((p) => !p.visivel)
+            .forEach((p) => {
+              document
+                .querySelectorAll('[data-produto="' + p.codigo + '"]')
+                .forEach((el) => el.remove());
+            });
+
+          // A contagem do topo acompanha o que sobrou visível — número fixo aqui viraria
+          // mentira no primeiro produto escondido.
+          const visiveis = produtos.filter((p) => p.visivel).length;
+          document.querySelectorAll('[data-contagem-produtos]').forEach((el) => {
+            el.textContent = String(visiveis);
+          });
+
+          // Seção sem nenhum card sobrando sai do ar, em vez de virar um título solto.
+          document.querySelectorAll('#solucoes, #precos').forEach((sec) => {
+            if (!sec.querySelector('[data-produto]')) sec.classList.add('is-empty');
+          });
+        })
+        .catch((err) => {
+          // Falhou: fica tudo como está no HTML. Nada some, nada pisca.
+          console.warn('[vitrine]', err.message);
+        });
+
+      // ---- Preços dinâmicos (#74) ----------------------------------------------------
+      // Cada produto publica o catálogo em GET /plans (rota pública, sem token). A landing
+      // lê em runtime, então mudar o preço no painel admin já reflete aqui — sem redeploy.
+      // Os backends liberam CORS especificamente nessa rota; o resto da API segue fechado.
+      const PLANS_API = {
+        // Estava apontando para 'horalivre-backend.up.railway.app', que responde 404 — o
+        // card de preço do Horalivre vinha se escondendo sozinho por causa disso, e o
+        // tratamento de erro (correto) mascarava o problema em vez de denunciá-lo.
+        horalivre: 'https://horalivre-production-c5d8.up.railway.app',
+        buffetmaster: 'https://buffetmaster-production.up.railway.app',
+        valide: 'https://valide-production.up.railway.app',
+      };
+
+      const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+      const perLabel = (interval) => (interval === 'ANUAL' ? '/ ano' : '/ mês');
+
+      async function fillPrices(key) {
+        const card = document.querySelector('[data-prices="' + key + '"]');
+        if (!card) return;
+        try {
+          const res = await fetch(PLANS_API[key] + '/plans', { headers: { Accept: 'application/json' } });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+
+          const plans = (await res.json()).filter((p) => p.active);
+          if (!plans.length) throw new Error('sem plano ativo');
+
+          // A API já devolve ordenado por preço crescente, então o primeiro é o "a partir de".
+          const cheapest = plans[0];
+          card.querySelector('[data-price-value]').textContent = brl.format(cheapest.price);
+          card.querySelector('[data-price-per]').textContent = perLabel(cheapest.interval);
+          card.querySelector('[data-price-all]').textContent = plans
+            .map((p) => p.name + ' · ' + brl.format(p.price) + ' ' + perLabel(p.interval))
+            .join('   |   ');
+          card.classList.remove('is-loading');
+        } catch (err) {
+          // API fora do ar: esconde o cartão. Preço errado na landing é pior que preço nenhum.
+          card.classList.add('is-unavailable');
+          console.warn('[precos] ' + key + ':', err.message);
+        }
+      }
+
+      Promise.allSettled([fillPrices('horalivre'), fillPrices('buffetmaster'), fillPrices('valide')]).then(() => {
+        const secao = document.getElementById('precos');
+        // Se nenhum dos dois respondeu, a seção inteira sai do ar em vez de ficar vazia.
+        if (!secao.querySelector('.price-card:not(.is-unavailable)')) secao.classList.add('is-empty');
+      });
     </script>
   </body>
 </html>
