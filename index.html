@@ -3,408 +3,410 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TrustCo Technologies — Engenharia de Software & Soluções em Nuvem</title>
+    <title>TrustCo Technologies — Soluções para Atendimento e Telefonia em Nuvem</title>
     <meta
       name="description"
-      content="A TrustCo Technologies desenvolve ecossistemas de software corporativo de alto desempenho: observabilidade de voz e WebRTC para contact centers em nuvem (VoiceVanguard CCaaS) e gestão inteligente de atendimento para agências (VoyaDesk)."
+      content="A TrustCo desenvolve plataformas de software focadas em atendimento ao cliente e infraestrutura de voz: VoiceVanguard CCaaS (observabilidade WebRTC para contact centers) e VoyaDesk (atendimento multicanal para turismo)."
     />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z' fill='%23cf9d3f'/%3E%3Cpath d='M11 16l3.2 3.2L21 12' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z' fill='%230f172a'/%3E%3Cpath d='M11 16l3.2 3.2L21 12' fill='none' stroke='%2338bdf8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
     <style>
       :root {
-        --ink-950: #0c0e14;
-        --ink-900: #12141d;
-        --ink-800: #1a1d2a;
-        --navy-700: #232a42;
-        --navy-500: #384a75;
-        --navy-400: #5c72a3;
-        --gold-600: #a9782a;
-        --gold-500: #cf9d3f;
-        --gold-400: #e3b968;
-        --gold-300: #f2d9a3;
-        --ink-050: #f7f5f0;
-        --ink-100: #ece7db;
-        --ink-300: #b3ac9c;
-        --ink-400: #8b8578;
-        --line: rgba(255, 255, 255, 0.09);
-        --card: rgba(255, 255, 255, 0.035);
-        --primary-blue: #0284c7;
-        --voyadesk-blue: #1F6FA8;
-        --font: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-        --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+        --bg: #ffffff;
+        --bg-alt: #f8fafc;
+        --border: #e2e8f0;
+        --border-dark: #cbd5e1;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --text-sub: #64748b;
+        --primary: #0284c7;
+        --primary-dark: #0369a1;
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       }
+
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
       body {
-        font-family: var(--font);
-        background: var(--ink-950);
-        color: var(--ink-100);
+        font-family: var(--font-sans);
+        background: var(--bg);
+        color: var(--text-main);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
       }
       a { color: inherit; text-decoration: none; }
-      .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+      .container { width: min(1140px, 92vw); margin: 0 auto; }
 
-      /* Ambient background */
-      .aura {
-        position: fixed; inset: 0; z-index: 0; pointer-events: none;
-        background:
-          radial-gradient(60% 50% at 12% 8%, rgba(207, 157, 63, 0.14), transparent 60%),
-          radial-gradient(45% 40% at 92% 4%, rgba(2, 132, 199, 0.18), transparent 55%),
-          radial-gradient(50% 45% at 80% 95%, rgba(56, 74, 117, 0.22), transparent 60%);
-      }
-      main { position: relative; z-index: 1; }
-
-      /* Nav */
+      /* Top Bar / Nav */
       nav {
-        position: sticky; top: 0; z-index: 20;
-        backdrop-filter: blur(14px);
-        background: rgba(12, 14, 20, 0.75);
-        border-bottom: 1px solid var(--line);
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
       }
-      .nav-in { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
-      .brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
-      .brand svg { width: 30px; height: 30px; }
-      .brand b { color: #fff; }
-      .brand span { color: var(--gold-400); }
-      .nav-links { display: flex; align-items: center; gap: 28px; font-size: 15px; color: var(--ink-300); }
-      .nav-links a:hover { color: #fff; }
-      .nav-cta {
-        padding: 9px 18px; border-radius: 999px; font-weight: 600; font-size: 14px;
-        background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
-        color: #1a1305; box-shadow: 0 8px 24px -10px rgba(207, 157, 63, 0.7);
-        transition: transform 0.2s, box-shadow 0.2s;
+      .nav-inner {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px 0;
       }
-      .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(207, 157, 63, 0.9); }
-      @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+      .brand-box {
+        display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px;
+        font-family: var(--font-heading); color: var(--text-main);
+      }
+      .brand-badge-shield {
+        width: 32px; height: 32px; border-radius: 8px; background: #0f172a;
+        display: flex; align-items: center; justify-content: center; color: #38bdf8;
+      }
+      .nav-menu { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 500; color: var(--text-muted); }
+      .nav-menu a:hover { color: var(--primary); }
+      .nav-btn {
+        padding: 8px 18px; border-radius: 6px; font-size: 13.5px; font-weight: 600;
+        background: #0f172a; color: white; transition: background 0.2s;
+      }
+      .nav-btn:hover { background: #1e293b; }
 
-      /* Hero */
-      header { padding: 96px 0 64px; text-align: center; }
-      .eyebrow {
+      @media (max-width: 680px) { .nav-menu a:not(.nav-btn) { display: none; } }
+
+      /* Header / Hero */
+      header {
+        padding: 72px 0 56px;
+        border-bottom: 1px solid var(--border);
+        background: radial-gradient(circle at 50% 0%, #f1f5f9 0%, #ffffff 70%);
+      }
+      .hero-tag {
         display: inline-flex; align-items: center; gap: 8px;
-        font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-        color: var(--gold-300); background: rgba(207, 157, 63, 0.12);
-        border: 1px solid rgba(207, 157, 63, 0.3); padding: 6px 14px; border-radius: 999px;
+        font-size: 12.5px; font-weight: 600; color: #0369a1; background: #e0f2fe;
+        border: 1px solid #bae6fd; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
       }
       h1 {
-        font-family: var(--font-display);
-        font-size: clamp(2.4rem, 5.5vw, 4.0rem); line-height: 1.1; letter-spacing: -0.01em;
-        font-weight: 700; margin: 26px auto 0; max-width: 18ch; text-wrap: balance;
+        font-family: var(--font-heading);
+        font-size: clamp(2.3rem, 5vw, 3.6rem);
+        font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
+        color: var(--text-main); max-width: 22ch;
       }
-      .sub {
-        font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--ink-300);
-        margin: 22px auto 0; max-width: 62ch; font-weight: 400; text-wrap: balance;
+      .hero-desc {
+        font-size: 18px; color: var(--text-muted); max-width: 65ch;
+        margin-top: 18px; line-height: 1.6;
       }
-      .hero-cta { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        padding: 13px 26px; border-radius: 999px; font-size: 15px; font-weight: 600;
-        transition: transform 0.2s, background 0.2s, border-color 0.2s;
+      .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+      .btn-main {
+        padding: 12px 24px; border-radius: 6px; font-size: 14.5px; font-weight: 600;
+        background: var(--primary); color: white; display: inline-flex; align-items: center; gap: 8px;
       }
-      .btn-primary {
-        background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
-        color: #1a1305; box-shadow: 0 10px 28px -10px rgba(207, 157, 63, 0.8);
+      .btn-main:hover { background: var(--primary-dark); }
+      .btn-secondary {
+        padding: 12px 24px; border-radius: 6px; font-size: 14.5px; font-weight: 600;
+        background: white; border: 1px solid var(--border-dark); color: var(--text-main);
       }
-      .btn-primary:hover { transform: translateY(-1px); }
-      .btn-ghost {
-        background: rgba(255, 255, 255, 0.04); color: var(--ink-100);
-        border: 1px solid var(--line);
-      }
-      .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }
-      .trust-row {
-        display: flex; align-items: center; justify-content: center; gap: 32px;
-        margin-top: 48px; font-size: 13.5px; color: var(--ink-400); flex-wrap: wrap;
-      }
-      .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
-      .trust-row b { color: var(--ink-100); }
+      .btn-secondary:hover { background: #f8fafc; border-color: #94a3b8; }
 
-      /* Section */
-      .sec { padding: 72px 0; border-top: 1px solid var(--line); }
-      .sec-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-400); }
-      .sec-title {
-        font-family: var(--font-display); font-size: clamp(2rem, 3.8vw, 2.7rem);
-        margin: 10px 0 36px; font-weight: 700; letter-spacing: -0.01em;
+      .hero-metrics {
+        display: flex; gap: 40px; margin-top: 48px; padding-top: 32px;
+        border-top: 1px solid var(--border); flex-wrap: wrap;
       }
+      .metric-item b { display: block; font-size: 22px; font-weight: 700; font-family: var(--font-heading); color: var(--text-main); }
+      .metric-item span { font-size: 13px; color: var(--text-sub); }
 
-      /* Products 2-Column Grid */
-      .products-grid {
-        display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
-      }
-      @media (max-width: 860px) { .products-grid { grid-template-columns: 1fr; } }
+      /* Seção de Produtos */
+      .section { padding: 80px 0; }
+      .sec-header { margin-bottom: 48px; }
+      .sec-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); }
+      .sec-title { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-top: 6px; }
 
-      .card {
-        background: var(--card); border: 1px solid var(--line);
-        border-radius: 20px; padding: 36px; display: flex; flex-direction: column;
-        position: relative; overflow: hidden; backdrop-filter: blur(8px);
-        transition: transform 0.25s, border-color 0.25s;
+      .product-row {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+        background: white; border: 1px solid var(--border); border-radius: 16px;
+        padding: 40px; margin-bottom: 48px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -2px rgba(0,0,0,0.02);
       }
-      .card:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.2); }
-      .card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; }
+      @media (max-width: 900px) { .product-row { grid-template-columns: 1fr; gap: 32px; padding: 28px; } }
+
+      .product-badge {
+        display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+        padding: 4px 8px; border-radius: 4px; margin-bottom: 12px;
+      }
+      .badge-telecom { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+      .badge-travel { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+
+      .product-info h3 { font-family: var(--font-heading); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+      .product-tagline { font-size: 14px; color: var(--text-sub); margin-bottom: 16px; font-weight: 500; }
+      .product-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
       
-      .card.voicevanguard::before { background: linear-gradient(90deg, #0284c7, #38bdf8, #818cf8); }
-      .card.voyadesk::before { background: linear-gradient(90deg, #1F6FA8, #6CAFDB, #e3b968); }
+      .spec-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; font-size: 14px; }
+      .spec-list li { display: flex; align-items: flex-start; gap: 8px; color: var(--text-main); }
+      .spec-list li svg { flex-shrink: 0; color: #16a34a; margin-top: 3px; }
 
-      .card-badge {
-        display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 18px; width: fit-content;
+      .product-link {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 14px; font-weight: 600; color: var(--primary);
       }
-      .badge-enterprise { background: rgba(2, 132, 199, 0.15); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.3); }
-      .badge-cx { background: rgba(31, 111, 168, 0.15); color: #6CAFDB; border: 1px solid rgba(31, 111, 168, 0.3); }
+      .product-link:hover { text-decoration: underline; color: var(--primary-dark); }
 
-      .card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-      .card-logo {
-        width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; flex-shrink: 0;
+      /* Mockup de Interface Real / Preview Box */
+      .mockup-frame {
+        background: #0f172a; border-radius: 12px; overflow: hidden;
+        border: 1px solid #334155; box-shadow: 0 12px 24px -6px rgba(0,0,0,0.12);
       }
-      .card.voicevanguard .card-logo { background: rgba(2, 132, 199, 0.16); color: #38bdf8; font-size: 26px; }
-      .card.voyadesk .card-logo { background: rgba(31, 111, 168, 0.16); }
-      .card.voyadesk .card-logo svg { width: 30px; height: 30px; }
-
-      .card h3 { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #fff; }
-      .kicker { font-size: 13px; color: var(--ink-300); }
-      .card p { font-size: 15px; color: var(--ink-300); line-height: 1.6; margin-bottom: 24px; }
-      
-      .feats { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
-      .feat { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-100); }
-      .feat svg { flex-shrink: 0; margin-top: 2px; }
-
-      .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--line); }
-      .card .go {
-        display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14.5px;
-        padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.04); transition: all 0.2s;
+      .mockup-header {
+        background: #1e293b; padding: 10px 14px; display: flex; align-items: center; gap: 8px;
+        border-bottom: 1px solid #334155;
       }
-      .card.voicevanguard .go:hover { background: rgba(2, 132, 199, 0.2); border-color: #38bdf8; color: #fff; }
-      .card.voyadesk .go:hover { background: rgba(31, 111, 168, 0.2); border-color: #6CAFDB; color: #fff; }
-
-      /* Why Section */
-      .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-      @media (max-width: 900px) { .why { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 540px) { .why { grid-template-columns: 1fr; } }
-      .why-item {
-        background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+      .mockup-dots { display: flex; gap: 6px; }
+      .dot { width: 9px; height: 9px; border-radius: 50%; }
+      .dot-r { background: #ef4444; } .dot-y { background: #f59e0b; } .dot-g { background: #10b981; }
+      .mockup-address {
+        background: #0f172a; border-radius: 4px; padding: 2px 10px; font-size: 11px;
+        color: #94a3b8; font-family: monospace; flex: 1; text-align: center;
       }
-      .why-item .ic {
-        width: 42px; height: 42px; border-radius: 10px; background: rgba(207, 157, 63, 0.12);
-        color: var(--gold-400); display: grid; place-items: center; margin-bottom: 16px;
-      }
-      .why-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff; }
-      .why-item p { font-size: 13.5px; color: var(--ink-300); line-height: 1.5; }
+      .mockup-content { background: #ffffff; padding: 20px; }
+      .mockup-img { width: 100%; height: auto; display: block; border-radius: 6px; }
 
-      /* CTA Banner */
-      .cta-box {
-        background: linear-gradient(135deg, rgba(207, 157, 63, 0.12), rgba(2, 132, 199, 0.1));
-        border: 1px solid rgba(207, 157, 63, 0.25); border-radius: 24px; padding: 56px 40px; text-align: center;
-      }
-      .cta-box h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.2vw, 2.5rem); margin-bottom: 16px; }
-      .cta-box p { font-size: 16px; color: var(--ink-300); max-width: 55ch; margin: 0 auto 32px; }
+      /* VoiceVanguard Live Mini UI */
+      .vv-ui { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; font-size: 12px; }
+      .vv-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #e2e8f0; }
+      .vv-row:last-child { border-bottom: none; }
+      .vv-status-ok { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 10px; font-weight: 700; font-size: 11px; }
 
-      /* Footer */
-      footer { border-top: 1px solid var(--line); padding: 36px 0; font-size: 13.5px; color: var(--ink-400); }
-      .foot-in { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-      .foot-links { display: flex; gap: 24px; }
-      .foot-links a:hover { color: #fff; }
+      /* Seção Técnica / Arquitetura */
+      .bg-gray { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      @media (max-width: 768px) { .pillars-grid { grid-template-columns: 1fr; } }
+      .pillar-box {
+        background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px;
+      }
+      .pillar-box h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+      .pillar-box p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+      /* Rodapé Institucional */
+      footer { padding: 48px 0 32px; font-size: 13px; color: var(--text-sub); }
+      .footer-top { display: flex; justify-content: space-between; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+      .footer-col h5 { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-main); margin-bottom: 12px; }
+      .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+      .footer-col a:hover { color: var(--primary); }
+      .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     </style>
   </head>
   <body>
-    <div class="aura" aria-hidden="true"></div>
-    <main>
-      <!-- Nav -->
-      <nav>
-        <div class="wrap nav-in">
-          <a class="brand" href="#top">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z" fill="#cf9d3f" />
-              <path d="M11 16l3.2 3.2L21 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span><b>Trust</b>Co</span>
-          </a>
-          <div class="nav-links">
-            <a href="#solucoes">Ecossistema</a>
-            <a href="#engenharia">Engenharia & Segurança</a>
-            <a href="#contato">Fale Conosco</a>
-            <a class="nav-cta" href="#solucoes">Conhecer Soluções</a>
+
+    <!-- Navegação -->
+    <nav>
+      <div class="container nav-inner">
+        <a class="brand-box" href="/">
+          <div class="brand-badge-shield">🛡️</div>
+          <span>TrustCo Technologies</span>
+        </a>
+        <div class="nav-menu">
+          <a href="#solucoes">Soluções</a>
+          <a href="#arquitetura">Segurança & Engenharia</a>
+          <a href="mailto:contato@trustco.pro">Suporte</a>
+          <a class="nav-btn" href="mailto:contato@trustco.pro">Falar com a Engenharia</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Institucional -->
+    <header>
+      <div class="container">
+        <span class="hero-tag">● Software House & Infraestrutura Cloud</span>
+        <h1>Soluções de software para operações que não podem parar.</h1>
+        <p class="hero-desc">
+          Desenvolvemos tecnologia proprietária em duas frentes complementares: observabilidade avançada de voz para plataformas de telefonia em nuvem e gestão multicanal de atendimento ao cliente.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-main" href="#solucoes">Ver Softwares em Produção &darr;</a>
+          <a class="btn-secondary" href="mailto:contato@trustco.pro">Contato Corporativo</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <b>Genesys Cloud CX</b>
+            <span>Integração nativa embutida (Client App)</span>
+          </div>
+          <div class="metric-item">
+            <b>Zero Gravação de Voz</b>
+            <span>Conformidade estrita com LGPD / GDPR</span>
+          </div>
+          <div class="metric-item">
+            <b>Multi-Tenant Real</b>
+            <span>Particionamento lógico isolado por organização</span>
           </div>
         </div>
-      </nav>
+      </div>
+    </header>
 
-      <!-- Hero -->
-      <header id="top">
-        <div class="wrap">
-          <span class="eyebrow">● Software Studio & Soluções em Nuvem</span>
-          <h1>Engenharia de software para operações de alta demanda.</h1>
-          <p class="sub">
-            A TrustCo Technologies projeta ecossistemas digitais robustos e de alto desempenho: observabilidade de voz para contact centers corporativos e plataformas de atendimento inteligente.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#solucoes">Conhecer as Soluções</a>
-            <a class="btn btn-ghost" href="#engenharia">Pilares de Engenharia</a>
-          </div>
-          <div class="trust-row">
-            <span><b>Multi-Tenant</b> com isolamento real</span>
-            <span><b>Zero Gravação de Áudio</b> &bull; LGPD / GDPR</span>
-            <span>Alta Disponibilidade 99.9%</span>
-            <span>Feito no Brasil 🇧🇷</span>
-          </div>
+    <!-- Vitrine de Produtos -->
+    <section class="section" id="solucoes">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-tag">Portfólio Ativo</span>
+          <h2 class="sec-title">Nossas Plataformas</h2>
         </div>
-      </header>
 
-      <!-- Soluções Principais (VoiceVanguard + VoyaDesk) -->
-      <section class="sec" id="solucoes">
-        <div class="wrap">
-          <p class="sec-label">Soluções Corporativas</p>
-          <h2 class="sec-title">Produtos desenhados para escala e confiabilidade</h2>
-
-          <div class="products-grid">
-            <!-- VoiceVanguard CCaaS -->
-            <article class="card voicevanguard">
-              <span class="card-badge badge-enterprise">Enterprise Telecom &bull; CCaaS</span>
-              <div class="card-head">
-                <div class="card-logo">🛡️</div>
-                <div>
-                  <h3>VoiceVanguard</h3>
-                  <div class="kicker">Observabilidade WebRTC & Qualidade de Voz</div>
-                </div>
-              </div>
-              <p>
-                Telemetria em tempo real para agentes e supervisores no Genesys Cloud CX e contact centers em nuvem. Audita scores MOS (ITU-T G.107), detecta instabilidades de Wi-Fi e executa remediação segura de cache de navegadores com trava operacional anti-queda.
-              </p>
-              <div class="feats">
-                <div class="feat">
-                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Auditoria de MOS ITU-T G.107 em tempo real a cada chamada
-                </div>
-                <div class="feat">
-                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Detecção preditiva de Wi-Fi residencial vs Cabo Ethernet
-                </div>
-                <div class="feat">
-                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Embedded Client App nativo para supervisores no Genesys Cloud
-                </div>
-              </div>
-              <div class="card-footer">
-                <span style="font-size: 13px; color: #38bdf8; font-weight: 600;">Disponível via Cloud Relay</span>
-                <a class="go" href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">
-                  Acessar VoiceVanguard
-                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-              </div>
-            </article>
-
-            <!-- VoyaDesk -->
-            <article class="card voyadesk">
-              <span class="card-badge badge-cx">Atendimento & Gestão &bull; CX</span>
-              <div class="card-head">
-                <div class="card-logo">
-                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="2.5" y="6.5" width="27" height="19" rx="4" stroke="#1F6FA8" stroke-width="2" />
-                    <path d="M4 9.5 14.2 17a3 3 0 0 0 3.6 0L28 9.5" stroke="#1F6FA8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.35" />
-                    <path d="M9 20.5c4.5-.4 8.4-2.6 11.4-6.2" stroke="#6CAFDB" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.1 3.4" />
-                    <path d="m19.4 10.6 4.8 1.3-1.3 4.8" stroke="#6CAFDB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <div>
-                  <h3>VoyaDesk</h3>
-                  <div class="kicker">Central de Atendimento para Agências de Viagem</div>
-                </div>
-              </div>
-              <p>
-                A central completa de atendimento multicanal, cotações e suporte inteligente desenhada para o setor de turismo. Transforma e-mails e solicitações em chamados com protocolo, prazos em horário comercial e distribuição automática de filas.
-              </p>
-              <div class="feats">
-                <div class="feat">
-                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Integração nativa com caixas de correio Outlook e Gmail
-                </div>
-                <div class="feat">
-                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  SLA corporativo com relógios de resposta configuráveis
-                </div>
-                <div class="feat">
-                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Atendentes ilimitados com precificação transparente por agência
-                </div>
-              </div>
-              <div class="card-footer">
-                <span style="font-size: 13px; color: #6CAFDB; font-weight: 600;">SaaS em Nuvem</span>
-                <a class="go" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">
-                  Conhecer o VoyaDesk
-                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-              </div>
-            </article>
+        <!-- 1. VoiceVanguard CCaaS -->
+        <div class="product-row">
+          <div class="product-info">
+            <span class="product-badge badge-telecom">Enterprise Telecom &bull; CCaaS</span>
+            <h3>VoiceVanguard</h3>
+            <div class="product-tagline">Observabilidade WebRTC e Qualidade de Voz em Tempo Real</div>
+            <p class="product-desc">
+              Monitora silenciosamente a estação de trabalho do atendente no navegador. Audita métricas numéricas ITU-T G.107 (MOS), alerta supervisores sobre instabilidades de Wi-Fi e executa limpeza segura de cache remoto sem interromper chamadas em andamento.
+            </p>
+            <ul class="spec-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Compatível com Genesys Cloud CX, Amazon Connect e Twilio Flex
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Detecção automática de Cabo Ethernet vs Wi-Fi residencial
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Trava operacional: remediação de cache aguarda o pós-atendimento
+              </li>
+            </ul>
+            <a class="product-link" href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">
+              Acessar Painel VoiceVanguard &rarr;
+            </a>
           </div>
-        </div>
-      </section>
 
-      <!-- Engenharia & Pilares -->
-      <section class="sec" id="engenharia">
-        <div class="wrap">
-          <p class="sec-label">Padrão de Engenharia</p>
-          <h2 class="sec-title">Arquitetura concebida para segurança e alta disponibilidade</h2>
-          <div class="why">
-            <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-              <h4>Isolamento Multi-Tenant</h4>
-              <p>Segurança estrita na camada de dados. Cada organização opera isolada com chaves criptográficas próprias, sem risco de vazamento cruzado.</p>
+          <!-- Mockup Visual VoiceVanguard -->
+          <div class="mockup-frame">
+            <div class="mockup-header">
+              <div class="mockup-dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+              <div class="mockup-address">voicevanguard.trustco.pro/dashboard</div>
             </div>
-            <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-              <h4>Privacidade por Design</h4>
-              <p>Conformidade total com LGPD e GDPR. Nossos interceptores de rede operam exclusivamente sobre telemetria numérica, com zero captura de voz.</p>
-            </div>
-            <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-              <h4>Tempo Real & Baixa Latência</h4>
-              <p>Comunicação bidirecional persistente via WebSockets seguros (WSS) e microsserviços distribuídos preparados para milhares de conexões simultâneas.</p>
-            </div>
-            <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg></div>
-              <h4>Suporte & Operação Nacional</h4>
-              <p>Engenharia 100% brasileira, com atendimento direto em português, nota fiscal, faturamento local e alinhamento com a legislação nacional.</p>
+            <div class="mockup-content">
+              <div class="vv-ui">
+                <div style="font-weight:700; color:#0f172a; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+                  <span>📡 Monitor de PAs em Atendimento</span>
+                  <span class="vv-status-ok">● Cloud Relay Conectado</span>
+                </div>
+                <div class="vv-row">
+                  <div><b>PA-104 (Operador 01)</b><div style="color:#64748b; font-size:11px;">Genesys Cloud &bull; Fila Suporte</div></div>
+                  <div><span style="font-weight:700; color:#0284c7;">MOS 4.42</span> (Excelente)</div>
+                  <div style="background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:4px; font-weight:600;">🔌 Cabo</div>
+                </div>
+                <div class="vv-row">
+                  <div><b>PA-208 (Operador 02)</b><div style="color:#64748b; font-size:11px;">Genesys Cloud &bull; Fila Vendas</div></div>
+                  <div><span style="font-weight:700; color:#059669;">MOS 4.38</span> (Bom)</div>
+                  <div style="background:#fef3c7; color:#b45309; padding:2px 6px; border-radius:4px; font-weight:600;">📶 Wi-Fi</div>
+                </div>
+                <div class="vv-row" style="background:#f1f5f9; margin-top:8px; border-radius:4px; padding:8px;">
+                  <span style="color:#475569;">Comando Remoto:</span>
+                  <span style="font-weight:600; color:#0284c7;">🧹 Limpeza Segura de Cache Ativa</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- CTA Contato -->
-      <section class="sec" id="contato">
-        <div class="wrap">
-          <div class="cta-box">
-            <h2>Pronto para elevar a qualidade da sua operação?</h2>
-            <p>Converse diretamente com nosso time de engenharia para agendar uma demonstração técnica ou integrar nossas soluções à sua infraestrutura.</p>
-            <div class="hero-cta">
-              <a class="btn btn-primary" href="mailto:contato@trustco.pro">Falar com a TrustCo &rarr;</a>
-              <a class="btn btn-ghost" href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">Acessar Demonstração do VoiceVanguard</a>
+        <!-- 2. VoyaDesk CX -->
+        <div class="product-row">
+          <div class="product-info">
+            <span class="product-badge badge-travel">Atendimento &bull; Turismo & Serviços</span>
+            <h3>VoyaDesk</h3>
+            <div class="product-tagline">Central de Chamados e Gestão de E-mails para Agências</div>
+            <p class="product-desc">
+              Organiza a caixa de entrada de agências de viagem e empresas de turismo. Conecta caixas de correio corporativas no Outlook ou Gmail, transformando solicitações em protocolos com prazos comerciais e distribuição por equipes.
+            </p>
+            <ul class="spec-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Centralização de e-mails em tickets com controle de SLA
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Prazos calculados automaticamente em horário de expediente
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Atendentes ilimitados com cobrança transparente por agência
+              </li>
+            </ul>
+            <a class="product-link" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">
+              Conhecer o VoyaDesk &rarr;
+            </a>
+          </div>
+
+          <!-- Mockup Visual VoyaDesk com Imagem Real -->
+          <div class="mockup-frame">
+            <div class="mockup-header">
+              <div class="mockup-dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+              <div class="mockup-address">voyadesk.trustco.pro/app</div>
+            </div>
+            <div class="mockup-content" style="padding:0;">
+              <img class="mockup-img" src="/assets/img/voyadesk-preview.png" alt="Interface real da central de chamados VoyaDesk" />
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Footer -->
-      <footer>
-        <div class="wrap foot-in">
-          <a class="brand" href="#top">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z" fill="#cf9d3f" />
-              <path d="M11 16l3.2 3.2L21 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span><b>Trust</b>Co Technologies</span>
-          </a>
-          <div class="foot-links">
-            <a href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">VoiceVanguard CCaaS</a>
-            <a href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">VoyaDesk</a>
-            <a href="mailto:contato@trustco.pro">contato@trustco.pro</a>
-          </div>
-          <span>© <span id="y"></span> TrustCo Technologies — Todos os direitos reservados.</span>
+      </div>
+    </section>
+
+    <!-- Pilares de Engenharia -->
+    <section class="section bg-gray" id="arquitetura">
+      <div class="container">
+        <div class="sec-header">
+          <span class="sec-tag">Arquitetura de Sistemas</span>
+          <h2 class="sec-title">Padrões de Engenharia e Segurança</h2>
         </div>
-      </footer>
-    </main>
+        <div class="pillars-grid">
+          <div class="pillar-box">
+            <h4>Isolamento de Dados Multi-Tenant</h4>
+            <p>Cada empresa opera com identificadores exclusivos e partições de dados isoladas em memória e disco, prevenindo qualquer vazamento de informações entre organizações.</p>
+          </div>
+          <div class="pillar-box">
+            <h4>Segurança e Privacidade (LGPD / GDPR)</h4>
+            <p>Coleta de dados estritamente técnica. Nossos agentes de telemetria analisam exclusivamente cabeçalhos de rede WebRTC, com zero gravação de áudio ou escuta telefônica.</p>
+          </div>
+          <div class="pillar-box">
+            <h4>Infraestrutura de Baixa Latência</h4>
+            <p>Servidores distribuídos em nuvem com conexões persistentes via WebSockets seguros (WSS) com criptografia TLS 1.3, projetados para suportar milhares de estações simultâneas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+      <div class="container">
+        <div class="footer-top">
+          <div style="max-width: 380px;">
+            <div class="brand-box" style="margin-bottom: 12px;">
+              <div class="brand-badge-shield">🛡️</div>
+              <span>TrustCo Technologies</span>
+            </div>
+            <p style="line-height: 1.6;">
+              Estúdio de engenharia de software especializado no desenvolvimento de plataformas em nuvem para atendimento e qualidade de voz.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h5>Soluções Ativas</h5>
+            <ul>
+              <li><a href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">VoiceVanguard CCaaS</a></li>
+              <li><a href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">VoyaDesk CX</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contato & Operação</h5>
+            <ul>
+              <li><a href="mailto:contato@trustco.pro">contato@trustco.pro</a></li>
+              <li><span>São Paulo / Brasil 🇧🇷</span></li>
+              <li><span>Horário Comercial (08h às 18h)</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span id="year"></span> TrustCo Technologies. Todos os direitos reservados.</span>
+          <span>Desenvolvido com tecnologia e infraestrutura própria.</span>
+        </div>
+      </div>
+    </footer>
+
     <script>
-      document.getElementById('y').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
