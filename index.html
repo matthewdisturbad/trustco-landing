@@ -3,23 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TrustCo — software que faz o negócio girar</title>
+    <title>TrustCo Technologies — Engenharia de Software & Soluções em Nuvem</title>
     <meta
       name="description"
-      content="A TrustCo cria softwares de gestão para negócios de serviço: Horalivre (agendamento), BuffetMaster (buffets e eventos), Validê (validade e rastreabilidade em cozinha) e VoyaDesk (atendimento para agências de viagem)."
+      content="A TrustCo Technologies desenvolve ecossistemas de software corporativo de alto desempenho: observabilidade de voz e WebRTC para contact centers em nuvem (VoiceVanguard CCaaS) e gestão inteligente de atendimento para agências (VoyaDesk)."
     />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z' fill='%23cf9d3f'/%3E%3Cpath d='M11 16l3.2 3.2L21 12' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-      /*
-       * Identidade "selo de confiança". O logo já era um escudo com check — um selo — e a
-       * paleta velha (azul-navy genérico) não dizia nada além de "produto de tecnologia".
-       * Dourado/latão é cor de selo, carimbo, certificado: mais específico pra uma marca
-       * chamada "Trust"Co do que gradiente azul, que qualquer SaaS usa. O azul continua
-       * existindo, mas como estrutura — não como o grito da página.
-       */
       :root {
         --ink-950: #0c0e14;
         --ink-900: #12141d;
@@ -37,8 +30,8 @@
         --ink-400: #8b8578;
         --line: rgba(255, 255, 255, 0.09);
         --card: rgba(255, 255, 255, 0.035);
-        --emerald: #12a45f;
-        --emerald-soft: #36cd80;
+        --primary-blue: #0284c7;
+        --voyadesk-blue: #1F6FA8;
         --font: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
         --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
       }
@@ -59,8 +52,8 @@
       .aura {
         position: fixed; inset: 0; z-index: 0; pointer-events: none;
         background:
-          radial-gradient(60% 50% at 12% 8%, rgba(207, 157, 63, 0.16), transparent 60%),
-          radial-gradient(45% 40% at 92% 4%, rgba(56, 74, 117, 0.28), transparent 55%),
+          radial-gradient(60% 50% at 12% 8%, rgba(207, 157, 63, 0.14), transparent 60%),
+          radial-gradient(45% 40% at 92% 4%, rgba(2, 132, 199, 0.18), transparent 55%),
           radial-gradient(50% 45% at 80% 95%, rgba(56, 74, 117, 0.22), transparent 60%);
       }
       main { position: relative; z-index: 1; }
@@ -83,11 +76,13 @@
         padding: 9px 18px; border-radius: 999px; font-weight: 600; font-size: 14px;
         background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
         color: #1a1305; box-shadow: 0 8px 24px -10px rgba(207, 157, 63, 0.7);
+        transition: transform 0.2s, box-shadow 0.2s;
       }
+      .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(207, 157, 63, 0.9); }
       @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
 
       /* Hero */
-      header { padding: 96px 0 72px; text-align: center; }
+      header { padding: 96px 0 64px; text-align: center; }
       .eyebrow {
         display: inline-flex; align-items: center; gap: 8px;
         font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
@@ -96,103 +91,130 @@
       }
       h1 {
         font-family: var(--font-display);
-        font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1.08; letter-spacing: -0.01em;
-        font-weight: 700; margin: 26px auto 0; max-width: 16ch; text-wrap: balance;
-        background: linear-gradient(180deg, #fff 45%, var(--gold-300));
-        -webkit-background-clip: text; background-clip: text; color: transparent;
+        font-size: clamp(2.4rem, 5.5vw, 4.0rem); line-height: 1.1; letter-spacing: -0.01em;
+        font-weight: 700; margin: 26px auto 0; max-width: 18ch; text-wrap: balance;
       }
-      .sub { margin: 22px auto 0; max-width: 60ch; font-size: clamp(1.02rem, 2.2vw, 1.22rem); color: var(--ink-300); }
-      .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 38px; }
+      .sub {
+        font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--ink-300);
+        margin: 22px auto 0; max-width: 62ch; font-weight: 400; text-wrap: balance;
+      }
+      .hero-cta { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
       .btn {
-        display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px; border-radius: 12px;
-        font-weight: 600; font-size: 15px; transition: transform 0.15s ease, box-shadow 0.15s ease;
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 13px 26px; border-radius: 999px; font-size: 15px; font-weight: 600;
+        transition: transform 0.2s, background 0.2s, border-color 0.2s;
       }
-      .btn:hover { transform: translateY(-2px); }
-      .btn-primary { background: linear-gradient(135deg, var(--gold-400), var(--gold-600)); color: #1a1305; box-shadow: 0 14px 40px -14px rgba(207, 157, 63, 0.75); }
-      .btn-ghost { border: 1px solid var(--line); color: var(--ink-100); background: var(--card); }
-      .trust-row { margin-top: 46px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; color: var(--ink-400); font-size: 14px; }
-      .trust-row b { color: #fff; }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+        color: #1a1305; box-shadow: 0 10px 28px -10px rgba(207, 157, 63, 0.8);
+      }
+      .btn-primary:hover { transform: translateY(-1px); }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.04); color: var(--ink-100);
+        border: 1px solid var(--line);
+      }
+      .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }
+      .trust-row {
+        display: flex; align-items: center; justify-content: center; gap: 32px;
+        margin-top: 48px; font-size: 13.5px; color: var(--ink-400); flex-wrap: wrap;
+      }
+      .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
+      .trust-row b { color: var(--ink-100); }
 
-      /* Section heading */
-      .sec { padding: 40px 0 20px; }
-      .sec-label { text-align: center; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-400); }
-      .sec-title { font-family: var(--font-display); text-align: center; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.01em; margin-top: 10px; color: #fff; }
+      /* Section */
+      .sec { padding: 72px 0; border-top: 1px solid var(--line); }
+      .sec-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-400); }
+      .sec-title {
+        font-family: var(--font-display); font-size: clamp(2rem, 3.8vw, 2.7rem);
+        margin: 10px 0 36px; font-weight: 700; letter-spacing: -0.01em;
+      }
 
-      /* Product cards */
-      .products { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 28px 0 20px; }
-      @media (max-width: 800px) { .products { grid-template-columns: 1fr; } }
+      /* Products 2-Column Grid */
+      .products-grid {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+      }
+      @media (max-width: 860px) { .products-grid { grid-template-columns: 1fr; } }
+
       .card {
-        position: relative; border: 1px solid var(--line); border-radius: 22px; padding: 32px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02));
-        overflow: hidden; transition: border-color 0.2s ease, transform 0.2s ease;
+        background: var(--card); border: 1px solid var(--line);
+        border-radius: 20px; padding: 36px; display: flex; flex-direction: column;
+        position: relative; overflow: hidden; backdrop-filter: blur(8px);
+        transition: transform 0.25s, border-color 0.25s;
       }
-      .card:hover { transform: translateY(-4px); border-color: rgba(227, 185, 104, 0.35); }
+      .card:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.2); }
       .card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; }
-      .card.horalivre::before { background: linear-gradient(90deg, #ff2e7a, #ff7a3d, #ffc53d); }
-      .card.buffet::before { background: linear-gradient(90deg, #12a45f, #0f8f8a, #e6b422); }
-      .card-head { display: flex; align-items: center; gap: 13px; }
-      .card-logo { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; }
-      .card.horalivre .card-logo { background: rgba(255, 46, 122, 0.14); }
-      .card.buffet .card-logo { background: rgba(18, 164, 95, 0.14); }
-      .card-logo svg { width: 28px; height: 28px; }
-      .card h3 { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
-      .card .kicker { font-size: 13px; color: var(--ink-400); font-weight: 600; }
-      .card p { margin-top: 16px; color: var(--ink-300); font-size: 15px; }
-      .feats { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
-      .feat { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-100); }
-      .feat svg { flex-shrink: 0; }
+      
+      .card.voicevanguard::before { background: linear-gradient(90deg, #0284c7, #38bdf8, #818cf8); }
+      .card.voyadesk::before { background: linear-gradient(90deg, #1F6FA8, #6CAFDB, #e3b968); }
+
+      .card-badge {
+        display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 18px; width: fit-content;
+      }
+      .badge-enterprise { background: rgba(2, 132, 199, 0.15); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.3); }
+      .badge-cx { background: rgba(31, 111, 168, 0.15); color: #6CAFDB; border: 1px solid rgba(31, 111, 168, 0.3); }
+
+      .card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+      .card-logo {
+        width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; flex-shrink: 0;
+      }
+      .card.voicevanguard .card-logo { background: rgba(2, 132, 199, 0.16); color: #38bdf8; font-size: 26px; }
+      .card.voyadesk .card-logo { background: rgba(31, 111, 168, 0.16); }
+      .card.voyadesk .card-logo svg { width: 30px; height: 30px; }
+
+      .card h3 { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #fff; }
+      .kicker { font-size: 13px; color: var(--ink-300); }
+      .card p { font-size: 15px; color: var(--ink-300); line-height: 1.6; margin-bottom: 24px; }
+      
+      .feats { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
+      .feat { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-100); }
+      .feat svg { flex-shrink: 0; margin-top: 2px; }
+
+      .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--line); }
       .card .go {
-        margin-top: 26px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;
-        padding: 11px 20px; border-radius: 10px; border: 1px solid var(--line); background: rgba(255,255,255,0.04); color: #fff;
+        display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14.5px;
+        padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04); transition: all 0.2s;
       }
-      .card.horalivre .go:hover { border-color: #ff5a9e; color: #ffb8d6; }
-      .card.buffet .go:hover { border-color: var(--emerald-soft); color: #a6f2c4; }
+      .card.voicevanguard .go:hover { background: rgba(2, 132, 199, 0.2); border-color: #38bdf8; color: #fff; }
+      .card.voyadesk .go:hover { background: rgba(31, 111, 168, 0.2); border-color: #6CAFDB; color: #fff; }
 
-      /* Why band */
-      .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 44px 0; }
-      @media (max-width: 980px) { .why { grid-template-columns: 1fr 1fr; } }
-      @media (max-width: 560px) { .why { grid-template-columns: 1fr; } }
-      .why-item { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--card); }
-      .why-item .ic { width: 40px; height: 40px; border-radius: 10px; background: rgba(92, 114, 163, 0.2); display: grid; place-items: center; color: var(--navy-400); }
-      .why-item h4 { margin-top: 14px; color: #fff; font-size: 1.05rem; }
-      .why-item p { margin-top: 7px; color: var(--ink-400); font-size: 14px; }
-
-      /* CTA */
-      .cta {
-        margin: 40px 0 20px; text-align: center; border: 1px solid var(--line); border-radius: 26px; padding: 56px 28px;
-        background:
-          radial-gradient(80% 120% at 50% 0%, rgba(207, 157, 63, 0.14), transparent 60%),
-          linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      /* Why Section */
+      .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+      @media (max-width: 900px) { .why { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 540px) { .why { grid-template-columns: 1fr; } }
+      .why-item {
+        background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
       }
-      .cta h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 700; color: #fff; letter-spacing: -0.01em; }
-      .cta p { margin: 12px auto 0; color: var(--ink-300); max-width: 46ch; }
-      .cta .hero-cta { margin-top: 28px; }
+      .why-item .ic {
+        width: 42px; height: 42px; border-radius: 10px; background: rgba(207, 157, 63, 0.12);
+        color: var(--gold-400); display: grid; place-items: center; margin-bottom: 16px;
+      }
+      .why-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+      .why-item p { font-size: 13.5px; color: var(--ink-300); line-height: 1.5; }
+
+      /* CTA Banner */
+      .cta-box {
+        background: linear-gradient(135deg, rgba(207, 157, 63, 0.12), rgba(2, 132, 199, 0.1));
+        border: 1px solid rgba(207, 157, 63, 0.25); border-radius: 24px; padding: 56px 40px; text-align: center;
+      }
+      .cta-box h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.2vw, 2.5rem); margin-bottom: 16px; }
+      .cta-box p { font-size: 16px; color: var(--ink-300); max-width: 55ch; margin: 0 auto 32px; }
 
       /* Footer */
-      footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 34px 0; }
-      .foot-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--ink-400); font-size: 14px; }
-      .foot-in .brand { font-size: 16px; }
-
-      /* Preços — valores vêm das APIs em runtime (nada de número fixo no HTML) */
-      .price-note { text-align: center; color: var(--ink-400); font-size: 14.5px; margin-top: 12px; }
-      .price-card .price { margin-top: 20px; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
-      .price-from { font-size: 13px; color: var(--ink-400); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-      .price-value { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
-      .price-per { color: var(--ink-400); font-size: 14px; }
-      .price-all { margin-top: 10px; color: var(--ink-300); font-size: 13.5px; min-height: 19px; }
-      .price-card.is-loading .price-value { color: var(--ink-400); }
-      .price-card.is-unavailable { display: none; }
-      /* Seção sem nenhum produto visível sai do ar em vez de virar título solto. */
-      #precos.is-empty,
-      #solucoes.is-empty { display: none; }
+      footer { border-top: 1px solid var(--line); padding: 36px 0; font-size: 13.5px; color: var(--ink-400); }
+      .foot-in { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+      .foot-links { display: flex; gap: 24px; }
+      .foot-links a:hover { color: #fff; }
     </style>
   </head>
   <body>
-    <div class="aura"></div>
+    <div class="aura" aria-hidden="true"></div>
     <main>
+      <!-- Nav -->
       <nav>
         <div class="wrap nav-in">
-          <a class="brand" href="#top" aria-label="TrustCo">
+          <a class="brand" href="#top">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z" fill="#cf9d3f" />
               <path d="M11 16l3.2 3.2L21 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
@@ -200,130 +222,81 @@
             <span><b>Trust</b>Co</span>
           </a>
           <div class="nav-links">
-            <a href="#solucoes">Soluções</a>
-            <a href="#porque">Por que a TrustCo</a>
-            <a class="nav-cta" href="#solucoes">Conhecer produtos</a>
+            <a href="#solucoes">Ecossistema</a>
+            <a href="#engenharia">Engenharia & Segurança</a>
+            <a href="#contato">Fale Conosco</a>
+            <a class="nav-cta" href="#solucoes">Conhecer Soluções</a>
           </div>
         </div>
       </nav>
 
+      <!-- Hero -->
       <header id="top">
         <div class="wrap">
-          <span class="eyebrow">● Software house de gestão</span>
-          <h1>Software que faz o seu negócio girar.</h1>
+          <span class="eyebrow">● Software Studio & Soluções em Nuvem</span>
+          <h1>Engenharia de software para operações de alta demanda.</h1>
           <p class="sub">
-            A TrustCo constrói produtos de gestão prontos pra usar, cada um pensado pra um tipo de
-            negócio — do agendamento do autônomo à operação inteira de um buffet, da cozinha à
-            agência de viagem. Mesmo padrão de qualidade em todos, cada um com a cara do negócio que atende.
+            A TrustCo Technologies projeta ecossistemas digitais robustos e de alto desempenho: observabilidade de voz para contact centers corporativos e plataformas de atendimento inteligente.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#solucoes">Ver as soluções</a>
-            <a class="btn btn-ghost" href="#porque">Como trabalhamos</a>
+            <a class="btn btn-primary" href="#solucoes">Conhecer as Soluções</a>
+            <a class="btn btn-ghost" href="#engenharia">Pilares de Engenharia</a>
           </div>
           <div class="trust-row">
-            <span><b data-contagem-produtos>4</b> produtos no ar</span>
-            <span>Dados isolados por cliente</span>
+            <span><b>Multi-Tenant</b> com isolamento real</span>
+            <span><b>Zero Gravação de Áudio</b> &bull; LGPD / GDPR</span>
+            <span>Alta Disponibilidade 99.9%</span>
             <span>Feito no Brasil 🇧🇷</span>
           </div>
         </div>
       </header>
 
+      <!-- Soluções Principais (VoiceVanguard + VoyaDesk) -->
       <section class="sec" id="solucoes">
         <div class="wrap">
-          <p class="sec-label">Nossas soluções</p>
-          <h2 class="sec-title">Cada negócio com a ferramenta certa</h2>
+          <p class="sec-label">Soluções Corporativas</p>
+          <h2 class="sec-title">Produtos desenhados para escala e confiabilidade</h2>
 
-          <div class="products">
-            <!-- Horalivre -->
-            <article class="card horalivre" data-produto="horalivre">
+          <div class="products-grid">
+            <!-- VoiceVanguard CCaaS -->
+            <article class="card voicevanguard">
+              <span class="card-badge badge-enterprise">Enterprise Telecom &bull; CCaaS</span>
               <div class="card-head">
-                <div class="card-logo">
-                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="16" cy="16" r="12" stroke="#ff5a9e" stroke-width="2.4" />
-                    <path d="M16 9v7l4.5 2.5" stroke="#ffb8d6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
+                <div class="card-logo">🛡️</div>
                 <div>
-                  <h3>Horalivre</h3>
-                  <div class="kicker">Agendamento para autônomos</div>
+                  <h3>VoiceVanguard</h3>
+                  <div class="kicker">Observabilidade WebRTC & Qualidade de Voz</div>
                 </div>
               </div>
               <p>
-                A página de agendamento pronta em minutos para cabeleireiros, manicures, tatuadores e
-                outros profissionais. O cliente marca sozinho; você cuida do atendimento.
+                Telemetria em tempo real para agentes e supervisores no Genesys Cloud CX e contact centers em nuvem. Audita scores MOS (ITU-T G.107), detecta instabilidades de Wi-Fi e executa remediação segura de cache de navegadores com trava operacional anti-queda.
               </p>
               <div class="feats">
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#ff5a9e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Agenda online e lembretes automáticos</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#ff5a9e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Clientes, pacotes, financeiro e métricas</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#ff5a9e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Reativação por e-mail e WhatsApp</div>
-              </div>
-              <a class="go" href="https://horalivre.trustco.pro" target="_blank" rel="noopener">
-                Acessar o Horalivre
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </article>
-
-            <!-- BuffetMaster -->
-            <article class="card buffet" data-produto="buffetmaster">
-              <div class="card-head">
-                <div class="card-logo">
-                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M6 21a10 10 0 0 1 20 0Z" fill="#12a45f" />
-                    <circle cx="16" cy="9" r="1.9" fill="#36cd80" />
-                    <rect x="4.5" y="22.3" width="23" height="2.6" rx="1.3" fill="#e6b422" />
-                  </svg>
+                <div class="feat">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Auditoria de MOS ITU-T G.107 em tempo real a cada chamada
                 </div>
-                <div>
-                  <h3>BuffetMaster</h3>
-                  <div class="kicker">Gestão de buffets e eventos</div>
+                <div class="feat">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Detecção preditiva de Wi-Fi residencial vs Cabo Ethernet
+                </div>
+                <div class="feat">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Embedded Client App nativo para supervisores no Genesys Cloud
                 </div>
               </div>
-              <p>
-                A operação inteira do buffet num só lugar: eventos, equipe, estoque, checklists,
-                financeiro e orçamentos — com acesso para o dono e sua equipe.
-              </p>
-              <div class="feats">
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#36cd80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Eventos, equipe e escala com WhatsApp</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#36cd80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Estoque, checklists e orçamentos</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#36cd80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Acesso para funcionários com auditoria</div>
+              <div class="card-footer">
+                <span style="font-size: 13px; color: #38bdf8; font-weight: 600;">Disponível via Cloud Relay</span>
+                <a class="go" href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">
+                  Acessar VoiceVanguard
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
               </div>
-              <a class="go" href="https://buffetmaster.trustco.pro" target="_blank" rel="noopener">
-                Acessar o BuffetMaster
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </article>
-
-            <!-- Validê -->
-            <article class="card valide" data-produto="valide">
-              <div class="card-head">
-                <div class="card-logo">
-                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M16 3.5a12.5 12.5 0 1 1-9.2 21" stroke="#12a771" stroke-width="2.6" stroke-linecap="round" />
-                    <path d="M10.5 16.4l3.7 3.7L22 12.3" stroke="#3fc794" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <div>
-                  <h3>Validê</h3>
-                  <div class="kicker">Validade e rastreabilidade na cozinha</div>
-                </div>
-              </div>
-              <p>
-                O que vence hoje, sem ninguém precisar lembrar. Para restaurante, padaria e cozinha
-                industrial que responde à vigilância sanitária.
-              </p>
-              <div class="feats">
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#3fc794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Relatório diário do que vence, por e-mail</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#3fc794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Contagem lendo o QR da etiqueta pelo celular</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#3fc794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Relatórios em PDF e Word para auditoria</div>
-              </div>
-              <a class="go" href="https://valide.trustco.pro" target="_blank" rel="noopener">
-                Acessar o Validê
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
             </article>
 
             <!-- VoyaDesk -->
-            <article class="card voyadesk" data-produto="voyadesk">
+            <article class="card voyadesk">
+              <span class="card-badge badge-cx">Atendimento & Gestão &bull; CX</span>
               <div class="card-head">
                 <div class="card-logo">
                   <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -335,138 +308,83 @@
                 </div>
                 <div>
                   <h3>VoyaDesk</h3>
-                  <div class="kicker">Atendimento para agências de viagem</div>
+                  <div class="kicker">Central de Atendimento para Agências de Viagem</div>
                 </div>
               </div>
               <p>
-                A caixa de e-mails da agência com nome, prazo e dono. Conecta o Outlook ou Gmail que
-                a equipe já usa — para o cliente, nada muda.
+                A central completa de atendimento multicanal, cotações e suporte inteligente desenhada para o setor de turismo. Transforma e-mails e solicitações em chamados com protocolo, prazos em horário comercial e distribuição automática de filas.
               </p>
               <div class="feats">
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Cada e-mail vira chamado com protocolo</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Filas, responsável e prazo em horário comercial</div>
-                <div class="feat"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Atendentes ilimitados, preço por agência</div>
+                <div class="feat">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Integração nativa com caixas de correio Outlook e Gmail
+                </div>
+                <div class="feat">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  SLA corporativo com relógios de resposta configuráveis
+                </div>
+                <div class="feat">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l3.5 3.5L16 6" stroke="#6CAFDB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Atendentes ilimitados com precificação transparente por agência
+                </div>
               </div>
-              <a class="go" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">
-                Conhecer o VoyaDesk
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+              <div class="card-footer">
+                <span style="font-size: 13px; color: #6CAFDB; font-weight: 600;">SaaS em Nuvem</span>
+                <a class="go" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">
+                  Conhecer o VoyaDesk
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="sec" id="porque">
+      <!-- Engenharia & Pilares -->
+      <section class="sec" id="engenharia">
         <div class="wrap">
-          <p class="sec-label">Por que a TrustCo</p>
-          <h2 class="sec-title">Software sério, do jeito que o seu negócio merece</h2>
+          <p class="sec-label">Padrão de Engenharia</p>
+          <h2 class="sec-title">Arquitetura concebida para segurança e alta disponibilidade</h2>
           <div class="why">
             <div class="why-item">
               <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-              <h4>Isolamento de verdade</h4>
-              <p>Cada cliente com os próprios dados, separados de verdade — não uma tabela com filtro de conta.</p>
+              <h4>Isolamento Multi-Tenant</h4>
+              <p>Segurança estrita na camada de dados. Cada organização opera isolada com chaves criptográficas próprias, sem risco de vazamento cruzado.</p>
             </div>
             <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3h6a2 2 0 0 1 2 2v6l-9 9-8-8 9-9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="8" r="1.4" fill="currentColor"/></svg></div>
-              <h4>Preço sem letra miúda</h4>
-              <p>O valor de cada plano está ali embaixo, direto da fonte — sem precisar "falar com a gente" pra saber quanto custa.</p>
+              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+              <h4>Privacidade por Design</h4>
+              <p>Conformidade total com LGPD e GDPR. Nossos interceptores de rede operam exclusivamente sobre telemetria numérica, com zero captura de voz.</p>
             </div>
             <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/><circle cx="12" cy="15" r="1.3" fill="currentColor"/></svg></div>
-              <h4>Cada produto com a sua cara</h4>
-              <p>Horalivre, BuffetMaster, Validê e VoyaDesk não são o mesmo sistema pintado de cores diferentes — cada um pensado pro negócio que atende.</p>
+              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h4>Tempo Real & Baixa Latência</h4>
+              <p>Comunicação bidirecional persistente via WebSockets seguros (WSS) e microsserviços distribuídos preparados para milhares de conexões simultâneas.</p>
             </div>
             <div class="why-item">
-              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="2"/></svg></div>
-              <h4>Feito e mantido no Brasil</h4>
-              <p>Suporte em português, Pix, cartão nacional e nota fiscal — sem tradução, sem fuso, sem fricção de sistema gringo.</p>
+              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg></div>
+              <h4>Suporte & Operação Nacional</h4>
+              <p>Engenharia 100% brasileira, com atendimento direto em português, nota fiscal, faturamento local e alinhamento com a legislação nacional.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="sec" id="precos">
+      <!-- CTA Contato -->
+      <section class="sec" id="contato">
         <div class="wrap">
-          <p class="sec-label">Planos</p>
-          <h2 class="sec-title">Preço direto da fonte</h2>
-          <p class="price-note">Sete dias grátis, sem cartão de crédito.</p>
-
-          <div class="products">
-            <article class="card horalivre price-card is-loading" data-prices="horalivre" data-produto="horalivre">
-              <div class="card-head">
-                <div>
-                  <h3>Horalivre</h3>
-                  <div class="kicker">Agendamento para autônomos</div>
-                </div>
-              </div>
-              <div class="price">
-                <span class="price-from">a partir de</span>
-                <span class="price-value" data-price-value>carregando…</span>
-                <span class="price-per" data-price-per></span>
-              </div>
-              <div class="price-all" data-price-all></div>
-              <a class="go" href="https://horalivre.trustco.pro#planos" target="_blank" rel="noopener">
-                Ver planos do Horalivre
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </article>
-
-            <article class="card buffet price-card is-loading" data-prices="buffetmaster" data-produto="buffetmaster">
-              <div class="card-head">
-                <div>
-                  <h3>BuffetMaster</h3>
-                  <div class="kicker">Gestão de buffets e eventos</div>
-                </div>
-              </div>
-              <div class="price">
-                <span class="price-from">a partir de</span>
-                <span class="price-value" data-price-value>carregando…</span>
-                <span class="price-per" data-price-per></span>
-              </div>
-              <div class="price-all" data-price-all></div>
-              <a class="go" href="https://buffetmaster.trustco.pro#planos" target="_blank" rel="noopener">
-                Ver planos do BuffetMaster
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </article>
-
-            <article class="card valide price-card is-loading" data-prices="valide" data-produto="valide">
-              <div class="card-head">
-                <div>
-                  <h3>Validê</h3>
-                  <div class="kicker">Validade e rastreabilidade na cozinha</div>
-                </div>
-              </div>
-              <div class="price">
-                <span class="price-from">a partir de</span>
-                <span class="price-value" data-price-value>carregando…</span>
-                <span class="price-per" data-price-per></span>
-              </div>
-              <div class="price-all" data-price-all></div>
-              <a class="go" href="https://valide.trustco.pro" target="_blank" rel="noopener">
-                Ver planos do Validê
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec">
-        <div class="wrap">
-          <div class="cta">
-            <h2>Pronto pra organizar o seu negócio?</h2>
-            <p>Escolha o produto certo pro que você faz e comece hoje — sete dias grátis, sem cartão.</p>
+          <div class="cta-box">
+            <h2>Pronto para elevar a qualidade da sua operação?</h2>
+            <p>Converse diretamente com nosso time de engenharia para agendar uma demonstração técnica ou integrar nossas soluções à sua infraestrutura.</p>
             <div class="hero-cta">
-              <a class="btn btn-primary" href="https://horalivre.trustco.pro" target="_blank" rel="noopener" data-produto="horalivre">Sou autônomo → Horalivre</a>
-              <a class="btn btn-ghost" href="https://buffetmaster.trustco.pro" target="_blank" rel="noopener" data-produto="buffetmaster">Tenho um buffet → BuffetMaster</a>
-              <a class="btn btn-ghost" href="https://valide.trustco.pro" target="_blank" rel="noopener" data-produto="valide">Tenho uma cozinha → Validê</a>
-              <a class="btn btn-ghost" href="https://voyadesk.trustco.pro" target="_blank" rel="noopener" data-produto="voyadesk">Tenho uma agência → VoyaDesk</a>
+              <a class="btn btn-primary" href="mailto:contato@trustco.pro">Falar com a TrustCo &rarr;</a>
+              <a class="btn btn-ghost" href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">Acessar Demonstração do VoiceVanguard</a>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Footer -->
       <footer>
         <div class="wrap foot-in">
           <a class="brand" href="#top">
@@ -474,100 +392,19 @@
               <path d="M16 3l11 4v8c0 7-4.7 11.8-11 14C9.7 26.8 5 22 5 15V7z" fill="#cf9d3f" />
               <path d="M11 16l3.2 3.2L21 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <span><b>Trust</b>Co</span>
+            <span><b>Trust</b>Co Technologies</span>
           </a>
-          <span>© <span id="y"></span> TrustCo — Todos os direitos reservados.</span>
+          <div class="foot-links">
+            <a href="https://voicevanguard.trustco.pro" target="_blank" rel="noopener">VoiceVanguard CCaaS</a>
+            <a href="https://voyadesk.trustco.pro" target="_blank" rel="noopener">VoyaDesk</a>
+            <a href="mailto:contato@trustco.pro">contato@trustco.pro</a>
+          </div>
+          <span>© <span id="y"></span> TrustCo Technologies — Todos os direitos reservados.</span>
         </div>
       </footer>
     </main>
     <script>
       document.getElementById('y').textContent = new Date().getFullYear();
-
-// ---- Vitrine: quais produtos aparecem -------------------------------------------
-      // O liga/desliga vive no admin.trustco.pro e é lido daqui em runtime, então esconder
-      // um produto não exige deploy nenhum.
-      //
-      // O padrão do HTML é MOSTRAR: os cards já vêm escritos e visíveis. Só escondemos
-      // depois da resposta. É de propósito — se a API não responder, a página fica como
-      // está, que é o estado correto na esmagadora maioria dos dias. O contrário (nascer
-      // escondido e revelar depois) transformaria qualquer instabilidade numa página de
-      // empresa sem produto nenhum, e ainda piscaria a cada visita.
-      const VITRINE_API = 'https://voyadesk-production-20d8.up.railway.app/publico/vitrine';
-
-      fetch(VITRINE_API, { headers: { Accept: 'application/json' } })
-        .then((r) => (r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status))))
-        .then((produtos) => {
-          produtos
-            .filter((p) => !p.visivel)
-            .forEach((p) => {
-              document
-                .querySelectorAll('[data-produto="' + p.codigo + '"]')
-                .forEach((el) => el.remove());
-            });
-
-          // A contagem do topo acompanha o que sobrou visível — número fixo aqui viraria
-          // mentira no primeiro produto escondido.
-          const visiveis = produtos.filter((p) => p.visivel).length;
-          document.querySelectorAll('[data-contagem-produtos]').forEach((el) => {
-            el.textContent = String(visiveis);
-          });
-
-          // Seção sem nenhum card sobrando sai do ar, em vez de virar um título solto.
-          document.querySelectorAll('#solucoes, #precos').forEach((sec) => {
-            if (!sec.querySelector('[data-produto]')) sec.classList.add('is-empty');
-          });
-        })
-        .catch((err) => {
-          // Falhou: fica tudo como está no HTML. Nada some, nada pisca.
-          console.warn('[vitrine]', err.message);
-        });
-
-      // ---- Preços dinâmicos (#74) ----------------------------------------------------
-      // Cada produto publica o catálogo em GET /plans (rota pública, sem token). A landing
-      // lê em runtime, então mudar o preço no painel admin já reflete aqui — sem redeploy.
-      // Os backends liberam CORS especificamente nessa rota; o resto da API segue fechado.
-      const PLANS_API = {
-        // Estava apontando para 'horalivre-backend.up.railway.app', que responde 404 — o
-        // card de preço do Horalivre vinha se escondendo sozinho por causa disso, e o
-        // tratamento de erro (correto) mascarava o problema em vez de denunciá-lo.
-        horalivre: 'https://horalivre-production-c5d8.up.railway.app',
-        buffetmaster: 'https://buffetmaster-production.up.railway.app',
-        valide: 'https://valide-production.up.railway.app',
-      };
-
-      const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-      const perLabel = (interval) => (interval === 'ANUAL' ? '/ ano' : '/ mês');
-
-      async function fillPrices(key) {
-        const card = document.querySelector('[data-prices="' + key + '"]');
-        if (!card) return;
-        try {
-          const res = await fetch(PLANS_API[key] + '/plans', { headers: { Accept: 'application/json' } });
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-
-          const plans = (await res.json()).filter((p) => p.active);
-          if (!plans.length) throw new Error('sem plano ativo');
-
-          // A API já devolve ordenado por preço crescente, então o primeiro é o "a partir de".
-          const cheapest = plans[0];
-          card.querySelector('[data-price-value]').textContent = brl.format(cheapest.price);
-          card.querySelector('[data-price-per]').textContent = perLabel(cheapest.interval);
-          card.querySelector('[data-price-all]').textContent = plans
-            .map((p) => p.name + ' · ' + brl.format(p.price) + ' ' + perLabel(p.interval))
-            .join('   |   ');
-          card.classList.remove('is-loading');
-        } catch (err) {
-          // API fora do ar: esconde o cartão. Preço errado na landing é pior que preço nenhum.
-          card.classList.add('is-unavailable');
-          console.warn('[precos] ' + key + ':', err.message);
-        }
-      }
-
-      Promise.allSettled([fillPrices('horalivre'), fillPrices('buffetmaster'), fillPrices('valide')]).then(() => {
-        const secao = document.getElementById('precos');
-        // Se nenhum dos dois respondeu, a seção inteira sai do ar em vez de ficar vazia.
-        if (!secao.querySelector('.price-card:not(.is-unavailable)')) secao.classList.add('is-empty');
-      });
     </script>
   </body>
 </html>
